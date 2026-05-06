@@ -233,14 +233,15 @@ function renderResults(data) {
   document.getElementById('loadingState').style.display = 'none';
 const videos = data.videos.map((v,i) => `
     <div class="video-card" onclick="window.open('${v.url}','_blank')" style="cursor:pointer">
-      <div class="video-thumb">🎥
+      <div class="video-thumb" style="position:relative; background:#000;">
+        ${v.thumbnail ? `<img src="${v.thumbnail}" style="width:100%;height:100%;object-fit:cover;display:block;">` : '🎥'}
         <div class="play-overlay"><div class="play-btn">▶</div></div>
       </div>
       <div class="video-info">
         <span class="platform-badge">▶ YouTube</span>
         <div class="video-title">${v.title}</div>
-        <div class="video-meta">📺 ${v.channel} · 👁 ${v.views} · ⭐ ${v.rating}</div>
-        <span class="${v.good ? 'sent-good' : 'sent-neutral'}">${v.good ? '👍 Olumlu' : '🤔 Karma'}</span>
+        <div class="video-meta">📺 ${v.channel}</div>
+        <span class="sent-good">👍 Olumlu</span>
       </div>
     </div>`).join('');
 
