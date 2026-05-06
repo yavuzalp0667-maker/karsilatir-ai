@@ -8,10 +8,37 @@ export default async function handler(req, res) {
     if (!query) return res.status(400).json({ error: 'Sorgu boş' });
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
+    const youtubeKey = process.env.YOUTUBE_API_KEY;
     if (!apiKey) return res.status(500).json({ error: 'API key bulunamadı' });
 
     const encoded = encodeURIComponent(query);
 
+    // YouTube'dan gerçek videolar çek
+    let videos = [];
+    if (youtubeKey) {
+      try {
+        const ytRes = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encoded}+inceleme+review&type=video&maxResults=4&relevanceLanguage=tr&key=${youtubeKey}`
+        );
+        const ytData = await ytRes.json();
+        if (ytData.items) {
+          videos = ytData.items.map(item => ({
+            title: item.snippet.title,
+            channel: item.snippet.channelTitle,
+            views: '',
+            rating: 4.5,
+            good: true,
+            url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+            thumbnail: item.snippet.thumbnails.medium.url,
+            videoId: item.id.videoId
+          }));
+        }
+      } catch(e) {
+        console.error('YouTube hatası:', e.message);
+      }
+    }
+
+    // AI'dan ürün bilgisi ve fiyatlar al
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -46,20 +73,12 @@ Kategoriye göre uygun mağazaları seç:
 - kitap: Trendyol, Hepsiburada, Amazon, Kitapyurdu, DR, İdefix
 - genel: Trendyol, Hepsiburada, Amazon, N11, GittiGidiyor, ePttAVM
 
-Fiyatları o ürüne gerçekçi TL değerlerinde yaz.
-
-SADECE JSON döndür, başka hiçbir şey yazma:
+SADECE JSON döndür:
 {
   "productName": "ürün adı",
   "category": "kategori",
   "summary": "2 cümle Türkçe açıklama",
   "rating": 4.3,
-  "videos": [
-    {"title":"YouTube inceleme başlığı","channel":"Kanal Adı","views":"120K","rating":4.5,"good":true},
-    {"title":"inceleme 2","channel":"Kanal 2","views":"85K","rating":4.2,"good":true},
-    {"title":"inceleme 3","channel":"Kanal 3","views":"43K","rating":3.7,"good":false},
-    {"title":"inceleme 4","channel":"Kanal 4","views":"200K","rating":4.8,"good":true}
-  ],
   "prices": [
     {"store":"Mağaza1","price":1299,"old":1599,"ship":"Ücretsiz","days":"1-2 gün","stock":true},
     {"store":"Mağaza2","price":1349,"old":null,"ship":"Ücretsiz","days":"2-3 gün","stock":true},
@@ -70,7 +89,7 @@ SADECE JSON döndür, başka hiçbir şey yazma:
   ],
   "pros": ["artı 1", "artı 2", "artı 3"],
   "cons": ["eksi 1", "eksi 2"],
-  "verdict": "AI tavsiyesi 2 cümle Türkçe"
+  "verdict": "AI tavsiyesi 5 cümle Türkçe"
 }`
         }],
       }),
@@ -118,10 +137,7 @@ SADECE JSON döndür, başka hiçbir şey yazma:
       url: storeUrls[p.store] || `https://www.google.com/search?q=${encoded}+${encodeURIComponent(p.store)}`
     }));
 
-    parsed.videos = parsed.videos.map(v => ({
-      ...v,
-      url: `https://www.youtube.com/results?search_query=${encoded}+inceleme`
-    }));
+    parsed.videos = videos.length > 0 ? videos : [];
 
     return res.status(200).json(parsed);
 
