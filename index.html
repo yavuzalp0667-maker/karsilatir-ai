@@ -193,7 +193,7 @@
     <div class="plan-card"><div><div class="plan-name">Başlangıç</div><div class="plan-desc">Banner + Sponsorlu liste</div></div><div class="plan-price">₺999/ay</div></div>
     <div class="plan-card plan-hi"><div><div class="plan-name">Pro ⭐</div><div class="plan-desc">Öncelikli gösterim + Analytics</div></div><div class="plan-price plan-price-hi">₺2.499/ay</div></div>
     <div class="plan-card"><div><div class="plan-name">Kurumsal</div><div class="plan-desc">Tam sayfa + Native içerik</div></div><div class="plan-price">₺5.999/ay</div></div>
-    <button class="contact-btn" onclick="window.location.href='mailto:reklam@karsilastir.ai'">İletişime Geç →</button>
+    <button class="contact-btn" onclick="window.location.href='mailto:yavuzalp0667@gmail.com'">İletişime Geç →</button>
   </div>
 </div>
 
@@ -231,9 +231,8 @@ async function doSearch(term) {
 
 function renderResults(data) {
   document.getElementById('loadingState').style.display = 'none';
-
-  const videos = data.videos.map((v,i) => `
-    <div class="video-card">
+const videos = data.videos.map((v,i) => `
+    <div class="video-card" onclick="window.open('${v.url}','_blank')" style="cursor:pointer">
       <div class="video-thumb">🎥
         <div class="play-overlay"><div class="play-btn">▶</div></div>
       </div>
