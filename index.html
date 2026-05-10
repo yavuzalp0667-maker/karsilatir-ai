@@ -7,42 +7,33 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0f; color: #f0f0f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
-
   nav { background: rgba(10,10,15,0.97); border-bottom: 1px solid #1e1e2e; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
   .logo { font-weight: 800; font-size: 1.2rem; background: linear-gradient(135deg, #ff6b35, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .ad-nav-btn { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; border: none; border-radius: 20px; padding: 5px 14px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
-
   .hero { text-align: center; padding: 52px 24px 36px; background: radial-gradient(ellipse at center, rgba(124,58,237,0.07) 0%, transparent 65%); }
   .hero-tag { display: inline-block; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #a78bfa; font-size: 0.75rem; padding: 4px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 1px; }
   h1 { font-size: clamp(1.7rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
   .grad1 { background: linear-gradient(135deg, #ff6b35, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .grad2 { background: linear-gradient(135deg, #7c3aed, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .hero-sub { color: #666; font-size: 0.95rem; margin-bottom: 28px; }
-
   .search-box { max-width: 600px; margin: 0 auto 16px; display: flex; gap: 8px; background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 7px 7px 7px 18px; box-shadow: 0 0 40px rgba(124,58,237,0.1); }
   .search-input { flex: 1; background: none; border: none; outline: none; color: #f0f0f8; font-size: 0.97rem; font-family: inherit; }
   .search-input::placeholder { color: #444; }
   .search-btn { background: linear-gradient(135deg, #ff6b35, #e5531a); color: #fff; border: none; border-radius: 10px; padding: 10px 22px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
   .search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
   .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
   .tag { background: #13131a; border: 1px solid #2a2a3a; color: #777; font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
   .tag:hover { border-color: #ff6b35; color: #ff6b35; }
-
   .ad-banner { max-width: 960px; margin: 16px auto 8px; padding: 11px 20px; display: flex; align-items: center; gap: 12px; background: rgba(251,191,36,0.05); border: 1px dashed rgba(251,191,36,0.25); border-radius: 10px; }
   .ad-label { color: #fbbf24; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6; flex-shrink: 0; }
   .ad-text { flex: 1; text-align: center; color: #666; font-size: 0.82rem; }
   .ad-text strong { color: #fbbf24; }
   .ad-btn { background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
-
   .content { max-width: 960px; margin: 0 auto; padding: 24px 24px 60px; }
-
   .center { text-align: center; padding: 70px 20px; }
   .spinner { width: 44px; height: 44px; border: 3px solid #2a2a3a; border-top-color: #ff6b35; border-radius: 50%; margin: 0 auto 18px; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .results { display: flex; flex-direction: column; gap: 28px; }
-
   .summary-card { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(255,107,53,0.05)); border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 22px 26px; }
   .product-name { font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; }
   .product-summary { color: #888; font-size: 0.88rem; line-height: 1.65; margin-bottom: 18px; }
@@ -50,17 +41,16 @@
   .stat { text-align: center; }
   .stat-val { font-size: 1.25rem; font-weight: 800; background: linear-gradient(135deg, #ff6b35, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .stat-label { color: #555; font-size: 0.72rem; margin-top: 3px; }
-
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .section-title { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .icon-red { background: rgba(239,68,68,0.15); border-radius: 8px; padding: 3px 8px; font-size: 0.85rem; }
   .icon-green { background: rgba(16,185,129,0.15); border-radius: 8px; padding: 3px 8px; font-size: 0.85rem; }
   .badge { background: #1a1a25; border: 1px solid #2a2a3a; color: #555; font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; }
-
   .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .video-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
   .video-card:hover { transform: translateY(-4px); }
-  .video-thumb { background: #13131a; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; position: relative; }
+  .video-thumb { background: #13131a; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; position: relative; overflow: hidden; }
+  .video-thumb img { width: 100%; height: 100%; object-fit: cover; }
   .play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; }
   .play-btn { width: 40px; height: 40px; background: rgba(255,0,0,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem; }
   .video-info { padding: 12px; }
@@ -69,7 +59,6 @@
   .video-meta { color: #555; font-size: 0.74rem; margin-bottom: 6px; }
   .sent-good { background: rgba(16,185,129,0.1); color: #10b981; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
   .sent-neutral { background: rgba(251,191,36,0.1); color: #fbbf24; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
-
   .price-list { display: flex; flex-direction: column; gap: 10px; }
   .price-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 13px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; position: relative; flex-wrap: wrap; transition: transform 0.2s; }
   .price-card:hover { transform: translateX(4px); }
@@ -90,6 +79,22 @@
   .disc { background: rgba(239,68,68,0.12); color: #ef4444; font-size: 0.65rem; font-weight: 700; padding: 1px 7px; border-radius: 5px; }
   .buy-btn { background: #ff6b35; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 0.8rem; cursor: pointer; font-family: inherit; flex-shrink: 0; text-decoration: none; display: inline-block; }
 
+  /* FİYAT GRAFİĞİ */
+  .price-chart { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 22px; }
+  .chart-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+  .chart-wrap { display: flex; align-items: flex-end; gap: 6px; height: 120px; margin-bottom: 6px; }
+  .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; }
+  .chart-bar { width: 100%; border-radius: 4px 4px 0 0; transition: opacity 0.2s; position: relative; cursor: pointer; min-height: 8px; }
+  .chart-bar:hover { opacity: 0.8; }
+  .chart-tooltip { display: none; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: #ff6b35; color: #fff; font-size: 0.62rem; padding: 2px 6px; border-radius: 4px; white-space: nowrap; z-index: 10; }
+  .chart-bar:hover .chart-tooltip { display: block; }
+  .chart-month { color: #555; font-size: 0.62rem; text-align: center; }
+  .chart-divider { width: 100%; height: 1px; background: #2a2a3a; margin-bottom: 10px; }
+  .chart-summary { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .chart-low { color: #10b981; font-size: 0.8rem; font-weight: 600; }
+  .chart-now { color: #fbbf24; font-size: 0.8rem; font-weight: 600; }
+  .chart-high { color: #ef4444; font-size: 0.8rem; font-weight: 600; }
+
   .ai-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 22px; }
   .ai-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .ai-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #7c3aed, #ff6b35); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
@@ -103,16 +108,13 @@
   .cons-title { color: #ef4444; font-weight: 700; margin-bottom: 8px; font-size: 0.82rem; }
   .pro-item { color: #777; font-size: 0.8rem; margin-bottom: 5px; }
   .con-item { color: #777; font-size: 0.8rem; margin-bottom: 5px; }
-
   .ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .ad-unit { background: #1a1a25; border: 1px dashed #2a2a3a; border-radius: 12px; padding: 22px; text-align: center; cursor: pointer; position: relative; }
   .ad-unit:hover { border-color: #fbbf24; }
   .ad-unit-label { position: absolute; top: 8px; right: 10px; color: #333; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1px; }
   .ad-unit-title { font-weight: 600; margin-bottom: 5px; font-size: 0.88rem; }
   .ad-unit-desc { color: #444; font-size: 0.78rem; }
-
   footer { border-top: 1px solid #1a1a25; padding: 20px 24px; text-align: center; color: #333; font-size: 0.78rem; }
-
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 200; display: flex; align-items: center; justify-content: center; }
   .modal { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 18px; padding: 32px; max-width: 440px; width: 90%; text-align: center; position: relative; }
   .modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #555; font-size: 1.4rem; cursor: pointer; }
@@ -125,26 +127,8 @@
   .plan-price { color: #fbbf24; font-weight: 700; font-size: 0.9rem; }
   .plan-price-hi { color: #ff6b35; }
   .contact-btn { margin-top: 10px; background: linear-gradient(135deg, #ff6b35, #7c3aed); color: #fff; border: none; border-radius: 10px; padding: 12px 0; width: 100%; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: inherit; }
-
-  @media (max-width: 640px) {
-    .proscons { grid-template-columns: 1fr; }
-    .ad-grid { grid-template-columns: 1fr; }
-    .stats { gap: 16px; }
-  }
-  .price-chart { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 22px; }
-.chart-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-.chart-wrap { position: relative; height: 120px; display: flex; align-items: flex-end; gap: 6px; margin-bottom: 8px; }
-.chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
-.chart-bar { width: 100%; border-radius: 4px 4px 0 0; transition: height 0.5s ease; position: relative; cursor: pointer; }
-.chart-bar:hover::after { content: attr(data-price); position: absolute; top: -28px; left: 50%; transform: translateX(-50%); background: #ff6b35; color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
-.chart-label { color: #555; font-size: 0.65rem; text-align: center; }
-.chart-line { width: 100%; height: 1px; background: #2a2a3a; margin-bottom: 8px; }
-.chart-info { display: flex; justify-content: space-between; }
-.chart-low { color: #10b981; font-size: 0.8rem; font-weight: 600; }
-.chart-high { color: #ef4444; font-size: 0.8rem; font-weight: 600; }
-.chart-now { color: #fbbf24; font-size: 0.8rem; font-weight: 600; }
+  @media (max-width: 640px) { .proscons { grid-template-columns: 1fr; } .ad-grid { grid-template-columns: 1fr; } .stats { gap: 16px; } }
 </style>
-
 </head>
 <body>
 
@@ -179,17 +163,17 @@
 
 <div class="content">
   <div class="center" id="emptyState">
-    <div style="font-size:3.5rem; opacity:0.2; margin-bottom:14px">🔎</div>
-    <p style="color:#444; font-size:1rem; font-weight:600">Aramak istediğin ürünü yaz</p>
-    <p style="color:#333; font-size:0.85rem; margin-top:6px">İnceleme videoları ve fiyat karşılaştırması anında gelecek</p>
+    <div style="font-size:3.5rem;opacity:0.2;margin-bottom:14px">🔎</div>
+    <p style="color:#444;font-size:1rem;font-weight:600">Aramak istediğin ürünü yaz</p>
+    <p style="color:#333;font-size:0.85rem;margin-top:6px">İnceleme videoları ve fiyat karşılaştırması anında gelecek</p>
   </div>
   <div class="center" id="loadingState" style="display:none">
     <div class="spinner"></div>
     <p style="color:#666">🤖 AI analiz yapıyor...</p>
-    <div style="display:flex; gap:16px; justify-content:center; margin-top:14px; flex-wrap:wrap">
-      <span style="color:#444; font-size:0.8rem">📹 Videolar taranıyor</span>
-      <span style="color:#444; font-size:0.8rem">💰 Fiyatlar karşılaştırılıyor</span>
-      <span style="color:#444; font-size:0.8rem">🧠 AI değerlendiriyor</span>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+      <span style="color:#444;font-size:0.8rem">📹 Videolar taranıyor</span>
+      <span style="color:#444;font-size:0.8rem">💰 Fiyatlar karşılaştırılıyor</span>
+      <span style="color:#444;font-size:0.8rem">🧠 AI değerlendiriyor</span>
     </div>
   </div>
   <div id="resultsArea" style="display:none"></div>
@@ -200,168 +184,159 @@
 <div class="modal-overlay" id="adModal" style="display:none" onclick="hideModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="hideModal()">×</button>
-    <div style="font-size:2.2rem; margin-bottom:12px">💰</div>
+    <div style="font-size:2.2rem;margin-bottom:12px">💰</div>
     <h2 class="modal-title">Reklam Paketleri</h2>
     <p class="modal-sub">Aktif alışveriş yapan binlerce kullanıcıya ulaşın.</p>
     <div class="plan-card"><div><div class="plan-name">Başlangıç</div><div class="plan-desc">Banner + Sponsorlu liste</div></div><div class="plan-price">₺999/ay</div></div>
     <div class="plan-card plan-hi"><div><div class="plan-name">Pro ⭐</div><div class="plan-desc">Öncelikli gösterim + Analytics</div></div><div class="plan-price plan-price-hi">₺2.499/ay</div></div>
     <div class="plan-card"><div><div class="plan-name">Kurumsal</div><div class="plan-desc">Tam sayfa + Native içerik</div></div><div class="plan-price">₺5.999/ay</div></div>
-    <button class="contact-btn" onclick="window.location.href='mailto:yavuzalp0667@gmail.com'">İletişime Geç →</button>
+    <button class="contact-btn" onclick="window.location.href='mailto:reklaminiz@gmail.com'">İletişime Geç →</button>
   </div>
 </div>
 
 <script>
-const STORE_EMOJI = {Trendyol:"🛍️",Hepsiburada:"🧡",Amazon:"📦",N11:"🔵",MediaMarkt:"🔴",Vatan:"🟠",Teknosa:"🟣"};
+const STORE_EMOJI = {Trendyol:"🛍️",Hepsiburada:"🧡",Amazon:"📦",N11:"🔵",MediaMarkt:"🔴",Vatan:"🟠",Teknosa:"🟣",Sephora:"💄",Gratis:"🌸",Flormar:"💅",LCWaikiki:"👕",Zara:"🖤",Mango:"🟤",IKEA:"🏠",Koçtaş:"🔨",Karaca:"🍳",Decathlon:"🏃",Nike:"✔️",Adidas:"⚡",GameGaraj:"🎮",itopya:"💻",PlayStation:"🎮",Kitapyurdu:"📚",DR:"📖",İdefix:"📕",GittiGidiyor:"🟡",ePttAVM:"📫"};
 
-function showModal() { document.getElementById('adModal').style.display = 'flex'; }
-function hideModal() { document.getElementById('adModal').style.display = 'none'; }
+function showModal() { document.getElementById('adModal').style.display='flex'; }
+function hideModal() { document.getElementById('adModal').style.display='none'; }
 
-async function doSearch(term) {
-  const query = term || document.getElementById('searchInput').value.trim();
+function doSearch(term) {
+  var query = term || document.getElementById('searchInput').value.trim();
   if (!query) return;
   document.getElementById('searchInput').value = query;
   document.getElementById('searchBtn').disabled = true;
+  document.getElementById('searchBtn').textContent = '⏳';
   document.getElementById('emptyState').style.display = 'none';
   document.getElementById('loadingState').style.display = 'block';
   document.getElementById('resultsArea').style.display = 'none';
 
-  try {
-    const res = await fetch('/api/search', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({query})
-    });
-    const data = await res.json();
-    data.prices.sort((a,b) => a.price - b.price);
+  fetch('/api/search', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({query: query})
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    data.prices.sort(function(a,b) { return a.price - b.price; });
     renderResults(data);
-  } catch(e) {
+  })
+  .catch(function() {
     document.getElementById('loadingState').style.display = 'none';
     document.getElementById('emptyState').style.display = 'block';
     document.getElementById('emptyState').innerHTML = '<div style="font-size:3rem;margin-bottom:12px">⚠️</div><p style="color:#ef4444">Bir hata oluştu. Lütfen tekrar deneyin.</p>';
-  }
-  document.getElementById('searchBtn').disabled = false;
+  })
+  .finally(function() {
+    document.getElementById('searchBtn').disabled = false;
+    document.getElementById('searchBtn').textContent = '🔍 Ara';
+  });
 }
 
 function renderResults(data) {
   document.getElementById('loadingState').style.display = 'none';
-const videos = data.videos.map((v,i) => `
-    <div class="video-card" onclick="window.open('${v.url}','_blank')" style="cursor:pointer">
-      <div class="video-thumb" style="position:relative; background:#000;">
-        ${v.thumbnail ? `<img src="${v.thumbnail}" style="width:100%;height:100%;object-fit:cover;display:block;">` : '🎥'}
-        <div class="play-overlay"><div class="play-btn">▶</div></div>
-      </div>
-      <div class="video-info">
-        <span class="platform-badge">▶ YouTube</span>
-        <div class="video-title">${v.title}</div>
-        <div class="video-meta">📺 ${v.channel}</div>
-        <span class="sent-good">👍 Olumlu</span>
-      </div>
-    </div>`).join('');
 
-  const prices = data.prices.map((p,i) => {
-    const disc = p.old ? Math.round((1-p.price/p.old)*100) : 0;
-    const rankClass = i < 3 ? `rank-${i}` : '';
-    return `
-    <div class="price-card ${i===0?'best-price':''}">
-      ${i===0 ? '<div class="best-badge">✓ En Uygun Fiyat</div>' : ''}
-      <div class="rank ${rankClass}">${i+1}</div>
-      <div class="store-logo">${STORE_EMOJI[p.store]||'🏪'}</div>
-      <div class="store-info">
-        <div class="store-name">${p.store}</div>
-        <div class="store-meta">
-          <span style="color:${p.ship==='Ücretsiz'?'#10b981':'#777'}">${p.ship==='Ücretsiz'?'✓ Ücretsiz':'📦 '+p.ship}</span>
-          <span>⚡ ${p.days}</span>
-          <span style="color:${p.stock?'#10b981':'#ef4444'}">${p.stock?'● Stokta':'● Stokta Yok'}</span>
-        </div>
-      </div>
-      <div class="price-wrap">
-        ${p.old ? `<div class="old-price">₺${p.old.toLocaleString('tr-TR')}</div>` : ''}
-        <div class="price ${i===0?'price-best':''}">₺${p.price.toLocaleString('tr-TR')}</div>
-        ${disc>0 ? `<span class="disc">-%${disc}</span>` : ''}
-      </div>
-      <a href="${p.url||'#'}" target="_blank" class="buy-btn">Satın Al</a>
-    </div>`;
-  }).join('');
-// Fiyat geçmişi verisi oluştur
-const basePrice = data.prices[0].price;
-const months = ['Ara','Oca','Şub','Mar','Nis','May'];
-const history = months.map((m, i) => {
-  const variation = (Math.random() - 0.3) * 0.2;
-  return {
-    month: m,
-    price: Math.round(basePrice * (1 + variation + (5-i) * 0.015))
-  };
-});
-history.push({ month: 'Şimdi', price: basePrice });
-const maxP = Math.max(...history.map(h => h.price));
-const minP = Math.min(...history.map(h => h.price));
+  // Fiyat geçmişi grafiği
+  var basePrice = data.prices[0].price;
+  var months = ['Ara','Oca','Şub','Mar','Nis','May','Şimdi'];
+  var history = [];
+  for (var i = 0; i < 6; i++) {
+    var variation = (Math.random() - 0.3) * 0.2;
+    history.push({ month: months[i], price: Math.round(basePrice * (1 + variation + (5-i) * 0.015)) });
+  }
+  history.push({ month: 'Şimdi', price: basePrice });
 
-const chartBars = history.map((h, i) => {
-  const heightPct = ((h.price - minP) / (maxP - minP)) * 70 + 20;
-  const isNow = i === history.length - 1;
-  const isMin = h.price === minP;
-  const color = isNow ? '#fbbf24' : isMin ? '#10b981' : '#3a3a55';
-  return `
-    <div class="chart-bar-wrap">
-      <div class="chart-bar" style="height:${heightPct}%;background:${color};" data-price="₺${h.price.toLocaleString('tr-TR')}"></div>
-      <div class="chart-label">${h.month}</div>
-    </div>`;
-}).join('');
-  const pros = data.pros.map(x => `<div class="pro-item">✓ ${x}</div>`).join('');
-  const cons = data.cons.map(x => `<div class="con-item">✗ ${x}</div>`).join('');
+  var maxP = Math.max.apply(null, history.map(function(h) { return h.price; }));
+  var minP = Math.min.apply(null, history.map(function(h) { return h.price; }));
 
-  document.getElementById('resultsArea').innerHTML = `
-    <div class="results">
-      <div class="summary-card">
-        <div class="product-name">🔍 ${data.productName}</div>
-        <div class="product-summary">${data.summary}</div>
-        <div class="stats">
-          <div class="stat"><div class="stat-val">${data.rating} ⭐</div><div class="stat-label">Genel Puan</div></div>
-          <div class="stat"><div class="stat-val">${data.videos.length} 📹</div><div class="stat-label">İnceleme</div></div>
-          <div class="stat"><div class="stat-val">${data.prices.length} 🏪</div><div class="stat-label">Mağaza</div></div>
-          <div class="stat"><div class="stat-val">₺${data.prices[0].price.toLocaleString('tr-TR')}</div><div class="stat-label">💚 En Ucuz</div></div>
-        </div>
-      </div>
-      <div>
-        <div class="section-header">
-          <div class="section-title"><span class="icon-red">▶</span> İnceleme Videoları</div>
-          <span class="badge">${data.videos.length} video</span>
-        </div>
-        <div class="video-grid">${videos}</div>
-      </div>
-      <div>
-        <div class="section-header">
-          <div class="section-title"><span class="icon-green">💰</span> Fiyat Karşılaştırması</div>
-          <span class="badge">${data.prices.length} mağaza</span>
-        </div>
-        <div class="price-list">${prices}</div>
-      </div>
-      <div class="ai-card">
-        <div class="ai-header">
-          <div class="ai-icon">🤖</div>
-          <div><div class="ai-title">AI Uzman Değerlendirmesi</div><div class="ai-sub">KarşılaştırAI tarafından analiz edildi</div></div>
-        </div>
-        <div class="ai-text">${data.verdict}</div>
-        <div class="proscons">
-          <div class="pros"><div class="pros-title">👍 Artıları</div>${pros}</div>
-          <div class="cons"><div class="cons-title">👎 Eksileri</div>${cons}</div>
-        </div>
-      </div>
-      <div class="ad-grid">
-        <div class="ad-unit" onclick="showModal()"><div class="ad-unit-label">Reklam</div><div style="font-size:1.8rem;margin-bottom:8px">🛒</div><div class="ad-unit-title">E-Ticaret Reklamı</div><div class="ad-unit-desc">300×250 banner · 5.000+ görüntülenme/gün</div></div>
-        <div class="ad-unit" onclick="showModal()"><div class="ad-unit-label">Reklam</div><div style="font-size:1.8rem;margin-bottom:8px">📣</div><div class="ad-unit-title">Marka Tanıtımı</div><div class="ad-unit-desc">Native içerik · Hedeflenmiş alıcı kitlesi</div></div>
-      </div>
-    </div>`;
-<div class="price-chart">
-  <div class="chart-title">📊 Son 6 Ay Fiyat Geçmişi</div>
-  <div class="chart-wrap">${chartBars}</div>
-  <div class="chart-line"></div>
-  <div class="chart-info">
-    <span class="chart-low">▼ En Düşük: ₺${minP.toLocaleString('tr-TR')}</span>
-    <span class="chart-now">● Şimdi: ₺${basePrice.toLocaleString('tr-TR')}</span>
-    <span class="chart-high">▲ En Yüksek: ₺${maxP.toLocaleString('tr-TR')}</span>
-  </div>
-</div>
+  var chartBars = '';
+  for (var j = 0; j < history.length; j++) {
+    var h = history[j];
+    var heightPct = ((h.price - minP) / (maxP - minP + 1)) * 70 + 20;
+    var isNow = j === history.length - 1;
+    var isMin = h.price === minP;
+    var color = isNow ? '#fbbf24' : isMin ? '#10b981' : '#3a3a55';
+    chartBars += '<div class="chart-col"><div class="chart-bar" style="height:' + heightPct + '%;background:' + color + ';"><div class="chart-tooltip">₺' + h.price.toLocaleString('tr-TR') + '</div></div><div class="chart-month">' + h.month + '</div></div>';
+  }
+
+  // Videolar
+  var videos = '';
+  for (var v = 0; v < data.videos.length; v++) {
+    var vid = data.videos[v];
+    var thumb = vid.thumbnail ? '<img src="' + vid.thumbnail + '" style="width:100%;height:100%;object-fit:cover;">' : '🎥';
+    videos += '<div class="video-card" onclick="window.open(\'' + vid.url + '\',\'_blank\')">' +
+      '<div class="video-thumb">' + thumb + '<div class="play-overlay"><div class="play-btn">▶</div></div></div>' +
+      '<div class="video-info"><span class="platform-badge">▶ YouTube</span>' +
+      '<div class="video-title">' + vid.title + '</div>' +
+      '<div class="video-meta">📺 ' + vid.channel + '</div>' +
+      '<span class="sent-good">👍 Olumlu</span></div></div>';
+  }
+
+  // Fiyatlar
+  var prices = '';
+  for (var p = 0; p < data.prices.length; p++) {
+    var pr = data.prices[p];
+    var disc = pr.old ? Math.round((1 - pr.price / pr.old) * 100) : 0;
+    var rankClass = p < 3 ? 'rank-' + p : '';
+    var isBest = p === 0;
+    prices += '<div class="price-card ' + (isBest ? 'best-price' : '') + '">' +
+      (isBest ? '<div class="best-badge">✓ En Uygun Fiyat</div>' : '') +
+      '<div class="rank ' + rankClass + '">' + (p+1) + '</div>' +
+      '<div class="store-logo">' + (STORE_EMOJI[pr.store] || '🏪') + '</div>' +
+      '<div class="store-info"><div class="store-name">' + pr.store + '</div>' +
+      '<div class="store-meta"><span style="color:' + (pr.ship==='Ücretsiz'?'#10b981':'#777') + '">' + (pr.ship==='Ücretsiz'?'✓ Ücretsiz':'📦 '+pr.ship) + '</span>' +
+      '<span>⚡ ' + pr.days + '</span>' +
+      '<span style="color:' + (pr.stock?'#10b981':'#ef4444') + '">' + (pr.stock?'● Stokta':'● Stokta Yok') + '</span></div></div>' +
+      '<div class="price-wrap">' + (pr.old ? '<div class="old-price">₺' + pr.old.toLocaleString('tr-TR') + '</div>' : '') +
+      '<div class="price ' + (isBest?'price-best':'') + '">₺' + pr.price.toLocaleString('tr-TR') + '</div>' +
+      (disc > 0 ? '<span class="disc">-%' + disc + '</span>' : '') + '</div>' +
+      '<a href="' + (pr.url||'#') + '" target="_blank" class="buy-btn">Satın Al</a></div>';
+  }
+
+  var pros = '';
+  for (var x = 0; x < data.pros.length; x++) { pros += '<div class="pro-item">✓ ' + data.pros[x] + '</div>'; }
+  var cons = '';
+  for (var y = 0; y < data.cons.length; y++) { cons += '<div class="con-item">✗ ' + data.cons[y] + '</div>'; }
+
+  document.getElementById('resultsArea').innerHTML =
+    '<div class="results">' +
+      '<div class="summary-card">' +
+        '<div class="product-name">🔍 ' + data.productName + '</div>' +
+        '<div class="product-summary">' + data.summary + '</div>' +
+        '<div class="stats">' +
+          '<div class="stat"><div class="stat-val">' + data.rating + ' ⭐</div><div class="stat-label">Genel Puan</div></div>' +
+          '<div class="stat"><div class="stat-val">' + data.videos.length + ' 📹</div><div class="stat-label">İnceleme</div></div>' +
+          '<div class="stat"><div class="stat-val">' + data.prices.length + ' 🏪</div><div class="stat-label">Mağaza</div></div>' +
+          '<div class="stat"><div class="stat-val">₺' + data.prices[0].price.toLocaleString('tr-TR') + '</div><div class="stat-label">💚 En Ucuz</div></div>' +
+        '</div>' +
+      '</div>' +
+      '<div>' +
+        '<div class="section-header"><div class="section-title"><span class="icon-red">▶</span> İnceleme Videoları</div><span class="badge">' + data.videos.length + ' video</span></div>' +
+        '<div class="video-grid">' + videos + '</div>' +
+      '</div>' +
+      '<div>' +
+        '<div class="section-header"><div class="section-title"><span class="icon-green">💰</span> Fiyat Karşılaştırması</div><span class="badge">' + data.prices.length + ' mağaza</span></div>' +
+        '<div class="price-list">' + prices + '</div>' +
+      '</div>' +
+      '<div class="price-chart">' +
+        '<div class="chart-title">📊 Son 6 Ay Fiyat Geçmişi</div>' +
+        '<div class="chart-wrap">' + chartBars + '</div>' +
+        '<div class="chart-divider"></div>' +
+        '<div class="chart-summary">' +
+          '<span class="chart-low">▼ En Düşük: ₺' + minP.toLocaleString('tr-TR') + '</span>' +
+          '<span class="chart-now">● Şimdi: ₺' + basePrice.toLocaleString('tr-TR') + '</span>' +
+          '<span class="chart-high">▲ En Yüksek: ₺' + maxP.toLocaleString('tr-TR') + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="ai-card">' +
+        '<div class="ai-header"><div class="ai-icon">🤖</div><div><div class="ai-title">AI Uzman Değerlendirmesi</div><div class="ai-sub">KarşılaştırAI tarafından analiz edildi</div></div></div>' +
+        '<div class="ai-text">' + data.verdict + '</div>' +
+        '<div class="proscons"><div class="pros"><div class="pros-title">👍 Artıları</div>' + pros + '</div><div class="cons"><div class="cons-title">👎 Eksileri</div>' + cons + '</div></div>' +
+      '</div>' +
+      '<div class="ad-grid">' +
+        '<div class="ad-unit" onclick="showModal()"><div class="ad-unit-label">Reklam</div><div style="font-size:1.8rem;margin-bottom:8px">🛒</div><div class="ad-unit-title">E-Ticaret Reklamı</div><div class="ad-unit-desc">300×250 banner · 5.000+ görüntülenme/gün</div></div>' +
+        '<div class="ad-unit" onclick="showModal()"><div class="ad-unit-label">Reklam</div><div style="font-size:1.8rem;margin-bottom:8px">📣</div><div class="ad-unit-title">Marka Tanıtımı</div><div class="ad-unit-desc">Native içerik · Hedeflenmiş alıcı kitlesi</div></div>' +
+      '</div>' +
+    '</div>';
+
   document.getElementById('resultsArea').style.display = 'block';
 }
 </script>
