@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -7,33 +7,75 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0f; color: #f0f0f8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+
+  /* NAV */
   nav { background: rgba(10,10,15,0.97); border-bottom: 1px solid #1e1e2e; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
   .logo { font-weight: 800; font-size: 1.2rem; background: linear-gradient(135deg, #ff6b35, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .ad-nav-btn { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; border: none; border-radius: 20px; padding: 5px 14px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
-  .hero { text-align: center; padding: 52px 24px 36px; background: radial-gradient(ellipse at center, rgba(124,58,237,0.07) 0%, transparent 65%); }
-  .hero-tag { display: inline-block; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #a78bfa; font-size: 0.75rem; padding: 4px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 1px; }
+
+  /* KATEGORİ MENÜSÜ */
+  .cat-menu { background: #13131a; border-bottom: 1px solid #1e1e2e; padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  .cat-menu::-webkit-scrollbar { display: none; }
+  .cat-btn { background: none; border: none; color: #888; font-size: 0.82rem; padding: 10px 14px; cursor: pointer; font-family: inherit; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .cat-btn:hover, .cat-btn.active { color: #ff6b35; border-bottom-color: #ff6b35; }
+
+  /* HERO */
+  .hero { text-align: center; padding: 40px 24px 28px; background: radial-gradient(ellipse at center, rgba(124,58,237,0.07) 0%, transparent 65%); }
+  .hero-tag { display: inline-block; background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: #a78bfa; font-size: 0.75rem; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; letter-spacing: 1px; }
   h1 { font-size: clamp(1.7rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 10px; }
   .grad1 { background: linear-gradient(135deg, #ff6b35, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .grad2 { background: linear-gradient(135deg, #7c3aed, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-sub { color: #666; font-size: 0.95rem; margin-bottom: 28px; }
-  .search-box { max-width: 600px; margin: 0 auto 16px; display: flex; gap: 8px; background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 7px 7px 7px 18px; box-shadow: 0 0 40px rgba(124,58,237,0.1); }
+  .hero-sub { color: #666; font-size: 0.95rem; margin-bottom: 24px; }
+  .search-box { max-width: 600px; margin: 0 auto 14px; display: flex; gap: 8px; background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 7px 7px 7px 18px; box-shadow: 0 0 40px rgba(124,58,237,0.1); }
   .search-input { flex: 1; background: none; border: none; outline: none; color: #f0f0f8; font-size: 0.97rem; font-family: inherit; }
   .search-input::placeholder { color: #444; }
   .search-btn { background: linear-gradient(135deg, #ff6b35, #e5531a); color: #fff; border: none; border-radius: 10px; padding: 10px 22px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
   .search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-  .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+  .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   .tag { background: #13131a; border: 1px solid #2a2a3a; color: #777; font-size: 0.78rem; padding: 4px 12px; border-radius: 20px; cursor: pointer; font-family: inherit; transition: all 0.2s; }
   .tag:hover { border-color: #ff6b35; color: #ff6b35; }
-  .ad-banner { max-width: 960px; margin: 16px auto 8px; padding: 11px 20px; display: flex; align-items: center; gap: 12px; background: rgba(251,191,36,0.05); border: 1px dashed rgba(251,191,36,0.25); border-radius: 10px; }
+
+  /* ÖZEL GÜN BANNERLAR */
+  .special-section { max-width: 960px; margin: 20px auto 0; padding: 0 24px; }
+  .special-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .special-card { border-radius: 12px; padding: 16px; cursor: pointer; transition: transform 0.2s; position: relative; overflow: hidden; }
+  .special-card:hover { transform: translateY(-3px); }
+  .special-card.anneler { background: linear-gradient(135deg, #f472b6, #db2777); }
+  .special-card.blackfriday { background: linear-gradient(135deg, #1f2937, #111827); border: 1px solid #374151; }
+  .special-card.indirim { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+  .special-emoji { font-size: 1.6rem; margin-bottom: 6px; }
+  .special-title { font-weight: 700; font-size: 0.88rem; color: #fff; }
+  .special-sub { font-size: 0.72rem; color: rgba(255,255,255,0.65); margin-top: 3px; }
+  .special-badge { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.2); color: #fff; font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+
+  /* AD BANNER */
+  .ad-banner { max-width: 960px; margin: 14px auto 0; padding: 0 24px; }
+  .ad-inner { padding: 11px 20px; display: flex; align-items: center; gap: 12px; background: rgba(251,191,36,0.05); border: 1px dashed rgba(251,191,36,0.25); border-radius: 10px; }
   .ad-label { color: #fbbf24; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6; flex-shrink: 0; }
   .ad-text { flex: 1; text-align: center; color: #666; font-size: 0.82rem; }
   .ad-text strong { color: #fbbf24; }
   .ad-btn { background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.25); color: #fbbf24; font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-family: inherit; flex-shrink: 0; }
+
+  /* POPÜLER ÜRÜNLER */
+  .popular-section { max-width: 960px; margin: 24px auto 0; padding: 0 24px; }
+  .sec-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .sec-title { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .popular-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .popular-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 12px; padding: 14px; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .popular-card:hover { border-color: #ff6b35; transform: translateY(-3px); }
+  .popular-emoji { font-size: 2rem; margin-bottom: 8px; }
+  .popular-name { font-size: 0.78rem; font-weight: 600; margin-bottom: 4px; color: #f0f0f8; }
+  .popular-price { font-size: 0.72rem; color: #10b981; font-weight: 700; }
+  .popular-badge { display: inline-block; background: rgba(239,68,68,0.12); color: #ef4444; font-size: 0.62rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-top: 4px; }
+
+  /* CONTENT */
   .content { max-width: 960px; margin: 0 auto; padding: 24px 24px 60px; }
-  .center { text-align: center; padding: 70px 20px; }
+  .center { text-align: center; padding: 60px 20px; }
   .spinner { width: 44px; height: 44px; border: 3px solid #2a2a3a; border-top-color: #ff6b35; border-radius: 50%; margin: 0 auto 18px; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .results { display: flex; flex-direction: column; gap: 28px; }
+
+  /* SUMMARY */
   .summary-card { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(255,107,53,0.05)); border: 1px solid rgba(124,58,237,0.2); border-radius: 16px; padding: 22px 26px; }
   .product-name { font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; }
   .product-summary { color: #888; font-size: 0.88rem; line-height: 1.65; margin-bottom: 18px; }
@@ -41,11 +83,15 @@
   .stat { text-align: center; }
   .stat-val { font-size: 1.25rem; font-weight: 800; background: linear-gradient(135deg, #ff6b35, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .stat-label { color: #555; font-size: 0.72rem; margin-top: 3px; }
+
+  /* SECTION */
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .section-title { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .icon-red { background: rgba(239,68,68,0.15); border-radius: 8px; padding: 3px 8px; font-size: 0.85rem; }
   .icon-green { background: rgba(16,185,129,0.15); border-radius: 8px; padding: 3px 8px; font-size: 0.85rem; }
   .badge { background: #1a1a25; border: 1px solid #2a2a3a; color: #555; font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; }
+
+  /* VİDEOLAR */
   .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .video-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
   .video-card:hover { transform: translateY(-4px); }
@@ -58,7 +104,8 @@
   .video-title { font-size: 0.85rem; font-weight: 500; line-height: 1.4; margin-bottom: 7px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .video-meta { color: #555; font-size: 0.74rem; margin-bottom: 6px; }
   .sent-good { background: rgba(16,185,129,0.1); color: #10b981; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
-  .sent-neutral { background: rgba(251,191,36,0.1); color: #fbbf24; font-size: 0.68rem; padding: 2px 8px; border-radius: 6px; }
+
+  /* FİYATLAR */
   .price-list { display: flex; flex-direction: column; gap: 10px; }
   .price-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 13px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; position: relative; flex-wrap: wrap; transition: transform 0.2s; }
   .price-card:hover { transform: translateX(4px); }
@@ -79,14 +126,23 @@
   .disc { background: rgba(239,68,68,0.12); color: #ef4444; font-size: 0.65rem; font-weight: 700; padding: 1px 7px; border-radius: 5px; }
   .buy-btn { background: #ff6b35; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 0.8rem; cursor: pointer; font-family: inherit; flex-shrink: 0; text-decoration: none; display: inline-block; }
 
+  /* FİYAT ALARMI */
+  .alarm-card { background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(255,107,53,0.04)); border: 1px solid rgba(124,58,237,0.2); border-radius: 14px; padding: 22px; }
+  .alarm-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .alarm-sub { color: #666; font-size: 0.85rem; margin-bottom: 16px; }
+  .alarm-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .alarm-input { flex: 1; min-width: 200px; background: #13131a; border: 1px solid #2a2a3a; border-radius: 10px; padding: 10px 16px; color: #f0f0f8; font-family: inherit; font-size: 0.9rem; outline: none; }
+  .alarm-input:focus { border-color: #7c3aed; }
+  .alarm-btn { background: linear-gradient(135deg, #7c3aed, #5b21b6); color: #fff; border: none; border-radius: 10px; padding: 10px 20px; font-weight: 700; font-size: 0.88rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
+  .alarm-success { display: none; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 12px 16px; color: #10b981; font-size: 0.88rem; margin-top: 12px; }
+
   /* FİYAT GRAFİĞİ */
   .price-chart { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 22px; }
   .chart-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
   .chart-wrap { display: flex; align-items: flex-end; gap: 6px; height: 120px; margin-bottom: 6px; }
   .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; }
-  .chart-bar { width: 100%; border-radius: 4px 4px 0 0; transition: opacity 0.2s; position: relative; cursor: pointer; min-height: 8px; }
-  .chart-bar:hover { opacity: 0.8; }
-  .chart-tooltip { display: none; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: #ff6b35; color: #fff; font-size: 0.62rem; padding: 2px 6px; border-radius: 4px; white-space: nowrap; z-index: 10; }
+  .chart-bar { width: 100%; border-radius: 4px 4px 0 0; position: relative; cursor: pointer; min-height: 8px; }
+  .chart-tooltip { display: none; position: absolute; top: -28px; left: 50%; transform: translateX(-50%); background: #ff6b35; color: #fff; font-size: 0.62rem; padding: 2px 6px; border-radius: 4px; white-space: nowrap; z-index: 10; }
   .chart-bar:hover .chart-tooltip { display: block; }
   .chart-month { color: #555; font-size: 0.62rem; text-align: center; }
   .chart-divider { width: 100%; height: 1px; background: #2a2a3a; margin-bottom: 10px; }
@@ -95,6 +151,7 @@
   .chart-now { color: #fbbf24; font-size: 0.8rem; font-weight: 600; }
   .chart-high { color: #ef4444; font-size: 0.8rem; font-weight: 600; }
 
+  /* AI KART */
   .ai-card { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 14px; padding: 22px; }
   .ai-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .ai-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #7c3aed, #ff6b35); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
@@ -108,13 +165,18 @@
   .cons-title { color: #ef4444; font-weight: 700; margin-bottom: 8px; font-size: 0.82rem; }
   .pro-item { color: #777; font-size: 0.8rem; margin-bottom: 5px; }
   .con-item { color: #777; font-size: 0.8rem; margin-bottom: 5px; }
+
+  /* ALT REKLAMLAR */
   .ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .ad-unit { background: #1a1a25; border: 1px dashed #2a2a3a; border-radius: 12px; padding: 22px; text-align: center; cursor: pointer; position: relative; }
   .ad-unit:hover { border-color: #fbbf24; }
   .ad-unit-label { position: absolute; top: 8px; right: 10px; color: #333; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1px; }
   .ad-unit-title { font-weight: 600; margin-bottom: 5px; font-size: 0.88rem; }
   .ad-unit-desc { color: #444; font-size: 0.78rem; }
+
   footer { border-top: 1px solid #1a1a25; padding: 20px 24px; text-align: center; color: #333; font-size: 0.78rem; }
+
+  /* MODAL */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 200; display: flex; align-items: center; justify-content: center; }
   .modal { background: #1a1a25; border: 1px solid #2a2a3a; border-radius: 18px; padding: 32px; max-width: 440px; width: 90%; text-align: center; position: relative; }
   .modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #555; font-size: 1.4rem; cursor: pointer; }
@@ -127,7 +189,14 @@
   .plan-price { color: #fbbf24; font-weight: 700; font-size: 0.9rem; }
   .plan-price-hi { color: #ff6b35; }
   .contact-btn { margin-top: 10px; background: linear-gradient(135deg, #ff6b35, #7c3aed); color: #fff; border: none; border-radius: 10px; padding: 12px 0; width: 100%; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: inherit; }
-  @media (max-width: 640px) { .proscons { grid-template-columns: 1fr; } .ad-grid { grid-template-columns: 1fr; } .stats { gap: 16px; } }
+
+  @media (max-width: 640px) {
+    .proscons { grid-template-columns: 1fr; }
+    .ad-grid { grid-template-columns: 1fr; }
+    .special-grid { grid-template-columns: 1fr; }
+    .stats { gap: 16px; }
+    .popular-grid { grid-template-columns: repeat(3, 1fr); }
+  }
 </style>
 </head>
 <body>
@@ -137,6 +206,22 @@
   <button class="ad-nav-btn" onclick="showModal()">💰 Reklam Ver</button>
 </nav>
 
+<!-- KATEGORİ MENÜSÜ -->
+<div class="cat-menu">
+  <button class="cat-btn active" onclick="catSearch(this,'')">🏠 Tümü</button>
+  <button class="cat-btn" onclick="catSearch(this,'iPhone 16 Pro')">📱 Telefon</button>
+  <button class="cat-btn" onclick="catSearch(this,'Samsung 4K TV')">📺 Televizyon</button>
+  <button class="cat-btn" onclick="catSearch(this,'Sony WH-1000XM5')">🎧 Kulaklık</button>
+  <button class="cat-btn" onclick="catSearch(this,'MacBook Air')">💻 Bilgisayar</button>
+  <button class="cat-btn" onclick="catSearch(this,'Chanel Chance parfüm')">💄 Kozmetik</button>
+  <button class="cat-btn" onclick="catSearch(this,'Nike spor ayakkabı')">👟 Giyim</button>
+  <button class="cat-btn" onclick="catSearch(this,'AirFryer')">🍳 Ev & Mutfak</button>
+  <button class="cat-btn" onclick="catSearch(this,'Decathlon spor')">🏃 Spor</button>
+  <button class="cat-btn" onclick="catSearch(this,'PlayStation 5')">🎮 Oyun</button>
+  <button class="cat-btn" onclick="catSearch(this,'roman kitap')">📚 Kitap</button>
+</div>
+
+<!-- HERO -->
 <div class="hero">
   <div class="hero-tag">🤖 Yapay Zeka Destekli Ürün Araştırma</div>
   <h1>Her Ürünü <span class="grad1">Araştır</span>,<br>En Ucuzunu <span class="grad2">Bul</span>.</h1>
@@ -155,14 +240,115 @@
   </div>
 </div>
 
-<div class="ad-banner">
-  <span class="ad-label">Reklam</span>
-  <span class="ad-text"><strong>Markanızı Burada Görün!</strong> — Günlük binlerce alıcıya ulaşın.</span>
-  <button class="ad-btn" onclick="showModal()">Teklif Al →</button>
+<!-- ÖZEL GÜN BANNERLAR -->
+<div class="special-section">
+  <div class="special-grid">
+    <div class="special-card anneler" onclick="doSearch('anneler günü hediye')">
+      <div class="special-badge">🎁 Özel</div>
+      <div class="special-emoji">💐</div>
+      <div class="special-title">Anneler Günü</div>
+      <div class="special-sub">En güzel hediyeler burada</div>
+    </div>
+    <div class="special-card blackfriday" onclick="doSearch('en çok satan ürün indirim')">
+      <div class="special-badge">🔥 Sıcak</div>
+      <div class="special-emoji">⚡</div>
+      <div class="special-title">Fiyatı Düşenler</div>
+      <div class="special-sub">Bugün en çok düşen ürünler</div>
+    </div>
+    <div class="special-card indirim" onclick="doSearch('en çok satan elektronik 2026')">
+      <div class="special-badge">🏆 Top</div>
+      <div class="special-emoji">📊</div>
+      <div class="special-title">En Çok Satanlar</div>
+      <div class="special-sub">2026 popüler ürünler</div>
+    </div>
+  </div>
 </div>
 
+<!-- AD BANNER -->
+<div class="ad-banner">
+  <div class="ad-inner">
+    <span class="ad-label">Reklam</span>
+    <span class="ad-text"><strong>Markanızı Burada Görün!</strong> — Günlük binlerce alıcıya ulaşın.</span>
+    <button class="ad-btn" onclick="showModal()">Teklif Al →</button>
+  </div>
+</div>
+
+<!-- POPÜLER ÜRÜNLER -->
+<div class="popular-section" id="homePage">
+  <div class="sec-header">
+    <div class="sec-title">🔥 Popüler Ürünler</div>
+  </div>
+  <div class="popular-grid">
+    <div class="popular-card" onclick="doSearch('iPhone 16 Pro')">
+      <div class="popular-emoji">📱</div>
+      <div class="popular-name">iPhone 16 Pro</div>
+      <div class="popular-price">₺59.999'den</div>
+      <div class="popular-badge">Çok Aranan</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Samsung Galaxy S25')">
+      <div class="popular-emoji">📱</div>
+      <div class="popular-name">Galaxy S25</div>
+      <div class="popular-price">₺42.999'den</div>
+      <div class="popular-badge">Trend</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Sony WH-1000XM5')">
+      <div class="popular-emoji">🎧</div>
+      <div class="popular-name">Sony WH-1000XM5</div>
+      <div class="popular-price">₺8.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('MacBook Air M3')">
+      <div class="popular-emoji">💻</div>
+      <div class="popular-name">MacBook Air M3</div>
+      <div class="popular-price">₺49.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('AirFryer')">
+      <div class="popular-emoji">🍳</div>
+      <div class="popular-name">AirFryer</div>
+      <div class="popular-price">₺1.499'den</div>
+      <div class="popular-badge">Çok Satan</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('PlayStation 5')">
+      <div class="popular-emoji">🎮</div>
+      <div class="popular-name">PlayStation 5</div>
+      <div class="popular-price">₺22.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Dyson V15')">
+      <div class="popular-emoji">🌀</div>
+      <div class="popular-name">Dyson V15</div>
+      <div class="popular-price">₺18.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Chanel Chance parfüm')">
+      <div class="popular-emoji">💐</div>
+      <div class="popular-name">Chanel Chance</div>
+      <div class="popular-price">₺3.299'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Nike Air Max')">
+      <div class="popular-emoji">👟</div>
+      <div class="popular-name">Nike Air Max</div>
+      <div class="popular-price">₺4.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('iPad Pro')">
+      <div class="popular-emoji">📟</div>
+      <div class="popular-name">iPad Pro</div>
+      <div class="popular-price">₺29.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Robot Süpürge')">
+      <div class="popular-emoji">🤖</div>
+      <div class="popular-name">Robot Süpürge</div>
+      <div class="popular-price">₺5.999'den</div>
+    </div>
+    <div class="popular-card" onclick="doSearch('Stanley termos')">
+      <div class="popular-emoji">🧋</div>
+      <div class="popular-name">Stanley Termos</div>
+      <div class="popular-price">₺1.499'den</div>
+      <div class="popular-badge">Trend</div>
+    </div>
+  </div>
+</div>
+
+<!-- SONUÇLAR -->
 <div class="content">
-  <div class="center" id="emptyState">
+  <div class="center" id="emptyState" style="display:none">
     <div style="font-size:3.5rem;opacity:0.2;margin-bottom:14px">🔎</div>
     <p style="color:#444;font-size:1rem;font-weight:600">Aramak istediğin ürünü yaz</p>
     <p style="color:#333;font-size:0.85rem;margin-top:6px">İnceleme videoları ve fiyat karşılaştırması anında gelecek</p>
@@ -181,6 +367,7 @@
 
 <footer>© 2026 <strong style="color:#555">KarşılaştırAI</strong> · Türkiye'nin Ürün Karşılaştırma Platformu · <span style="cursor:pointer" onclick="showModal()">Reklam Ver</span></footer>
 
+<!-- REKLAM MODAL -->
 <div class="modal-overlay" id="adModal" style="display:none" onclick="hideModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="hideModal()">×</button>
@@ -195,17 +382,26 @@
 </div>
 
 <script>
-const STORE_EMOJI = {Trendyol:"🛍️",Hepsiburada:"🧡",Amazon:"📦",N11:"🔵",MediaMarkt:"🔴",Vatan:"🟠",Teknosa:"🟣",Sephora:"💄",Gratis:"🌸",Flormar:"💅",LCWaikiki:"👕",Zara:"🖤",Mango:"🟤",IKEA:"🏠",Koçtaş:"🔨",Karaca:"🍳",Decathlon:"🏃",Nike:"✔️",Adidas:"⚡",GameGaraj:"🎮",itopya:"💻",PlayStation:"🎮",Kitapyurdu:"📚",DR:"📖",İdefix:"📕",GittiGidiyor:"🟡",ePttAVM:"📫"};
+var STORE_EMOJI = {Trendyol:"🛍️",Hepsiburada:"🧡",Amazon:"📦",N11:"🔵",MediaMarkt:"🔴",Vatan:"🟠",Teknosa:"🟣",Sephora:"💄",Gratis:"🌸",Flormar:"💅",LCWaikiki:"👕",Zara:"🖤",Mango:"🟤",IKEA:"🏠",Koçtaş:"🔨",Karaca:"🍳",Decathlon:"🏃",Nike:"✔️",Adidas:"⚡",GameGaraj:"🎮",itopya:"💻",PlayStation:"🎮",Kitapyurdu:"📚",DR:"📖",İdefix:"📕",GittiGidiyor:"🟡",ePttAVM:"📫"};
+var currentProduct = '';
 
 function showModal() { document.getElementById('adModal').style.display='flex'; }
 function hideModal() { document.getElementById('adModal').style.display='none'; }
 
+function catSearch(btn, q) {
+  document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (q) doSearch(q);
+}
+
 function doSearch(term) {
   var query = term || document.getElementById('searchInput').value.trim();
   if (!query) return;
+  currentProduct = query;
   document.getElementById('searchInput').value = query;
   document.getElementById('searchBtn').disabled = true;
   document.getElementById('searchBtn').textContent = '⏳';
+  document.getElementById('homePage').style.display = 'none';
   document.getElementById('emptyState').style.display = 'none';
   document.getElementById('loadingState').style.display = 'block';
   document.getElementById('resultsArea').style.display = 'none';
@@ -231,19 +427,25 @@ function doSearch(term) {
   });
 }
 
+function setAlarm() {
+  var email = document.getElementById('alarmEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Geçerli bir e-posta adresi girin!'); return; }
+  document.getElementById('alarmSuccess').style.display = 'block';
+  document.getElementById('alarmSuccess').innerHTML = '✅ Alarm kuruldu! <strong>' + currentProduct + '</strong> fiyatı düşünce <strong>' + email + '</strong> adresine bildirim gönderilecek.';
+  document.getElementById('alarmEmail').value = '';
+}
+
 function renderResults(data) {
   document.getElementById('loadingState').style.display = 'none';
 
-  // Fiyat geçmişi grafiği
   var basePrice = data.prices[0].price;
-  var months = ['Ara','Oca','Şub','Mar','Nis','May','Şimdi'];
+  var months = ['Ara','Oca','Şub','Mar','Nis','May'];
   var history = [];
   for (var i = 0; i < 6; i++) {
     var variation = (Math.random() - 0.3) * 0.2;
     history.push({ month: months[i], price: Math.round(basePrice * (1 + variation + (5-i) * 0.015)) });
   }
   history.push({ month: 'Şimdi', price: basePrice });
-
   var maxP = Math.max.apply(null, history.map(function(h) { return h.price; }));
   var minP = Math.min.apply(null, history.map(function(h) { return h.price; }));
 
@@ -257,11 +459,10 @@ function renderResults(data) {
     chartBars += '<div class="chart-col"><div class="chart-bar" style="height:' + heightPct + '%;background:' + color + ';"><div class="chart-tooltip">₺' + h.price.toLocaleString('tr-TR') + '</div></div><div class="chart-month">' + h.month + '</div></div>';
   }
 
-  // Videolar
   var videos = '';
   for (var v = 0; v < data.videos.length; v++) {
     var vid = data.videos[v];
-    var thumb = vid.thumbnail ? '<img src="' + vid.thumbnail + '" style="width:100%;height:100%;object-fit:cover;">' : '🎥';
+    var thumb = vid.thumbnail ? '<img src="' + vid.thumbnail + '">' : '🎥';
     videos += '<div class="video-card" onclick="window.open(\'' + vid.url + '\',\'_blank\')">' +
       '<div class="video-thumb">' + thumb + '<div class="play-overlay"><div class="play-btn">▶</div></div></div>' +
       '<div class="video-info"><span class="platform-badge">▶ YouTube</span>' +
@@ -270,7 +471,6 @@ function renderResults(data) {
       '<span class="sent-good">👍 Olumlu</span></div></div>';
   }
 
-  // Fiyatlar
   var prices = '';
   for (var p = 0; p < data.prices.length; p++) {
     var pr = data.prices[p];
@@ -325,6 +525,15 @@ function renderResults(data) {
           '<span class="chart-now">● Şimdi: ₺' + basePrice.toLocaleString('tr-TR') + '</span>' +
           '<span class="chart-high">▲ En Yüksek: ₺' + maxP.toLocaleString('tr-TR') + '</span>' +
         '</div>' +
+      '</div>' +
+      '<div class="alarm-card">' +
+        '<div class="alarm-title">🔔 Fiyat Alarmı Kur</div>' +
+        '<div class="alarm-sub">Fiyat düşünce sana e-posta ile haber verelim!</div>' +
+        '<div class="alarm-form">' +
+          '<input class="alarm-input" id="alarmEmail" type="email" placeholder="E-posta adresiniz">' +
+          '<button class="alarm-btn" onclick="setAlarm()">🔔 Alarm Kur</button>' +
+        '</div>' +
+        '<div class="alarm-success" id="alarmSuccess"></div>' +
       '</div>' +
       '<div class="ai-card">' +
         '<div class="ai-header"><div class="ai-icon">🤖</div><div><div class="ai-title">AI Uzman Değerlendirmesi</div><div class="ai-sub">KarşılaştırAI tarafından analiz edildi</div></div></div>' +
